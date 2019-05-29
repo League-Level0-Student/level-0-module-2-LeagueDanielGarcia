@@ -6,6 +6,7 @@ package random;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -54,7 +55,7 @@ public class RockPaperScissors extends JPanel implements ActionListener{
         paperButton.setPreferredSize(buttonDim);
         scissorsButton.setPreferredSize(buttonDim);
         
-        instructionLabel.setText("Choose Your Weapon!");
+        instructionLabel.setText("Choose Your !");
         
         add(instructionLabel);
         add(rockButton);
@@ -75,12 +76,12 @@ public class RockPaperScissors extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         
         //1. Run the program and play many rounds of Rock Paper Scissors. Does the computer always choose the same thing?
-
+    			
         //2. Change the value of opponentSelection to be a random number between 0 and 2;
 	//   Don't forget to create a Random object.
-	    
+	    Random random = new Random();
         //2. Change the value of opponentSelection to be a random number between 0 and 2; 
-        int opponentSelection = 0;
+        int opponentSelection = random.nextInt(2);
         
         //3. Run the program again. Is the result different?
  
@@ -96,23 +97,23 @@ public class RockPaperScissors extends JPanel implements ActionListener{
                     + "The computer chose: " + convertSelection(opponentSelection) + ".\n");
         
         if(selection == opponentSelection){
-            JOptionPane.showMessageDialog(null, "No Winner.  Play again.");
+            JOptionPane.showMessageDialog(null, "You lose!");
         }else if((selection == 0 && opponentSelection == 2) || 
                  (selection == 1 && opponentSelection == 0) ||
                  (selection == 2 && opponentSelection == 1)){
             JOptionPane.showMessageDialog(null, "You Win!");
         }else{
-            JOptionPane.showMessageDialog(null, "You Lose!");
+            JOptionPane.showMessageDialog(null, "You lose!");
         }
     }
     
     private String convertSelection(int s){
        if (s==0)
-            return "ROCK";
+            return "rock";
        else if (s==1)
-            return "PAPER";
+            return "paper";
        else if (s==2)
-            return "SCISSORS";
+            return "scissors";
        else
             return "";
         }
